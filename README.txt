@@ -1,6 +1,6 @@
-KHARCHA 3.0 — GITHUB PAGES DEPLOYMENT
+KHARCHA 4.0 — CLEAN START (GITHUB PAGES)
 
-FILES TO UPLOAD
+PACKAGE CONTENTS
 - index.html
 - manifest.json
 - sw.js
@@ -8,30 +8,35 @@ FILES TO UPLOAD
 - icon-512.png
 - icon-maskable-512.png
 
-DEPLOY / UPDATE
-1. Open the GitHub repository that publishes https://badcolonel4333.github.io/Kharcha/.
-2. Back up your current files (especially index.html, manifest.json and sw.js).
-3. Upload/replace all six files above in the same repository folder (the repository root if the current app is published from root).
-4. Commit the changes to the branch/folder configured in GitHub Pages.
-5. Open the site in Chrome on your phone. If an old version appears, close the installed app/browser tab, reopen the site, and refresh once. The new service-worker cache is kharcha-v3-shell.
-6. If you already installed Kharcha, open the website once while online so the updated app shell can install, then launch the installed app again.
+WHAT CHANGED
+- Starts with zero transactions and zero preloaded categories.
+- Does not read, migrate, or display data from the older Kharcha v2/v3 localStorage key.
+- Uses a separate browser storage key: kharcha-v4-clean-start.
+- Simple insights: category spending bars and a six-month spending trend.
+- Keeps quick expense entry, editing/deleting, search, monthly filter, optional budget, themes, JSON backup/restore and Excel export/import.
+- Updated service-worker cache name for the new release.
 
-DATA PRESERVATION
-The upgraded app reads the existing localStorage key "kharcha" and migrates the old v2 fields (e / cats / rt / lastSum) to the new format. Deploying to the same GitHub Pages origin should preserve browser-local data. Do not clear site data or uninstall the old app before opening the upgraded version. As a precaution, export your existing expenses to Excel from the old app before updating. For moving data to another phone/browser, use Settings > Backup JSON on the new app and import that JSON on the new device.
+IMPORTANT ABOUT YOUR OLD DATA
+The previous data is not deleted. Kharcha 4.0 simply uses a separate storage key, so your older expenses and categories will not appear in this clean version. This avoids accidentally destroying your earlier data. You can still access the old data by restoring the previous app files and storage setup, or importing a backup manually if needed.
 
-WHAT'S NEW
-- Updated responsive mobile-first interface.
-- Monthly budget and remaining-budget overview.
-- Today, month, daily average, 7-day and top-category summaries.
-- Add descriptions/notes; edit and delete transactions.
-- Search transactions and filter by month.
-- Monthly category and daily spending insights with month navigation.
-- Manage categories and choose system/light/dark theme.
-- JSON backup/restore and Excel export; CSV fallback if the spreadsheet library is unavailable.
-- Legacy v2 data migration and updated offline app-shell cache.
+DEPLOY
+1. Download and extract the ZIP.
+2. Open the GitHub repository that publishes https://badcolonel4333.github.io/Kharcha/.
+3. Back up the current repository files.
+4. Upload and replace all six app files in the same folder used by GitHub Pages.
+5. Commit the changes to the published branch.
+6. Open the site in Chrome on your phone while online. Allow the new service worker to update; close and reopen the installed app if the previous shell remains visible.
 
-NOTES / LIMITATIONS
-- Expenses remain in browser localStorage on this device; there is no account, cloud sync or multi-device sync.
-- Scheduled reminders are best-effort and only run while the app is open; browser/OS notification restrictions apply.
-- Excel import/export uses the SheetJS CDN library and therefore requires internet access for that library. JSON backup/restore works without it.
-- GitHub Pages serves a web app/PWA. It can be installed on Android from Chrome; it is not a Play Store APK.
+INSTALL ON ANDROID
+Open the website in Chrome → three-dot menu → Install app (or Add to Home screen).
+
+DATA & PRIVACY
+Expenses are stored locally in this browser under the new Kharcha 4 storage key. No account or cloud sync is included. Export a JSON backup regularly, especially before changing phones or clearing browser data.
+
+CHARTS
+The Insights tab shows a category breakdown for the selected month and a compact six-month trend. Empty charts display a prompt instead of filling the screen with zero-value bars.
+
+NOTES
+- GitHub Pages hosts the PWA; this package is not an APK or Play Store release.
+- Excel import/export uses the SheetJS CDN and requires internet access for that library. JSON backup/restore is built in.
+- Browser notifications are best-effort and may only work while the app is open, depending on browser/OS restrictions.
